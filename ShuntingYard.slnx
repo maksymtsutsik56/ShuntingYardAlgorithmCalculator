@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ShuningYardTests/ShuntingYardTests.csproj" />
+  <Project Path="ShuntingYard/ShuntingYard.csproj" />
+</Solution>
