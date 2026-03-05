@@ -6,7 +6,7 @@ namespace ShuntingYard
 {
     static class ConsoleIO
     {
-        static string ReadStringInput()
+        public static string ReadStringInput()
         {
             Console.Write("Your input: ");
             string input = Console.ReadLine();
@@ -16,7 +16,7 @@ namespace ShuntingYard
             return input;
         }
 
-        static void PrintStringMessage(string message)
+        public static void PrintStringMessage(string message)
         {
             Console.WriteLine(message); 
         }

@@ -22,7 +22,7 @@ static class PostfixCalculator
                     double second = stack.Pop();
                     double first = stack.Pop();
 
-                    double result = OperatorInfo.Apply(first, second, token.Value); // also need to test if the order and logic is correct
+                    double result = OperatorInfo.Apply(first, second, token.Value); 
                     stack.Push(result);
                     break;
             }
