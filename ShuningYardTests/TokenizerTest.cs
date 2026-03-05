@@ -38,6 +38,5 @@ namespace ShuntingYardTests
 
             Assert.That(result, Is.EqualTo(12));
         }
-
     }
 }

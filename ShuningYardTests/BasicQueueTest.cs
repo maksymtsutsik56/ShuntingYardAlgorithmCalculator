@@ -54,5 +54,29 @@ namespace ShuntingYardTests
             Assert.That(result, Is.EqualTo(new { item1 = 1, item2 = 2 }));
 
         }
+
+        [Test]
+
+        public void EnqueuingWithResizeWorksCorrectly()
+        {
+            BasicQueue<int> basicQueue = new();
+
+            basicQueue.Enqueue(1);
+            basicQueue.Dequeue();
+            basicQueue.Enqueue(1);
+            basicQueue.Enqueue(2);
+            basicQueue.Enqueue(3);
+            basicQueue.Enqueue(4);
+            basicQueue.Enqueue(5);
+
+            int[] result = new int[5];
+            for (int i = 0; i < 5; i++)
+            {
+                result[i] = basicQueue.Dequeue();
+            }
+              
+            Assert.That(result, Is.EqualTo([1,2,3,4,5,]));
+
+        }
     }
 }
