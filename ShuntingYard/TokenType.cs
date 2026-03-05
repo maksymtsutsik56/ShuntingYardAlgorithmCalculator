@@ -4,6 +4,6 @@ internal enum TokenType
 {
     Number,
     Operator,
-    LeftParenthesis,
-    RightParenthesis
+    OpenParenthesis,
+    CloseParenthesis
 }

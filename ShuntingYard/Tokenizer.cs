@@ -42,6 +42,22 @@ static class Tokenizer
                 continue;
             }
 
+            if (c == '(')
+            {
+                list.Add(new Token(c.ToString(), TokenType.OpenParenthesis));
+
+                i++;
+                continue;
+            }
+
+            if (c == ')')
+            {
+                list.Add(new Token(c.ToString(), TokenType.CloseParenthesis));
+
+                i++;
+                continue;
+            }
+
             list.Add(new Token(c.ToString(), TokenType.Operator));
             i++;
         }
@@ -49,48 +65,3 @@ static class Tokenizer
         return list;
     }
 }
-
-
-
-//for (int i = 0; i < expression.Length; i++)
-//{
-//    char c = expression[i];
-
-//    if (char.IsAsciiDigit(c))
-//    {
-//        string output = string.Empty;
-
-//        while(char.IsAsciiDigit(c))
-//        {   
-//            output += c;
-
-//            i++;
-//            if (i >= expression.Length) break;
-
-//            c = expression[i];
-//        }
-
-//        list.Add(output);
-//    }
-
-//    if (char.IsAsciiLetter(c))
-//    {
-//        string output = string.Empty;
-
-//        while (char.IsAsciiLetter(c))
-//        {
-//            output += c;
-
-//            i++;
-//            if (i >= expression.Length) break;
-
-//            c = expression[i];
-//        }
-
-//        if ((char.IsWhiteSpace(c))) continue;
-
-//        list.Add(output);
-//    }
-
-//list.Add(c.ToString());
-//}
