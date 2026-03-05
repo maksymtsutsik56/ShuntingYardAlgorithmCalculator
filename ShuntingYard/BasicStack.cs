@@ -19,7 +19,7 @@ internal class BasicStack<T>
 
     public void Push(T value)
     {
-        if (_pointer == _underlyingArray.Length - 1) Upsize();
+        if (Count == _underlyingArray.Length) Upsize();
 
         _pointer++;
         _underlyingArray[_pointer] = value;
@@ -35,7 +35,7 @@ internal class BasicStack<T>
         _underlyingArray[_pointer] = default!;
         _pointer--;
 
-        if (_underlyingArray.Length >= _pointer * 4) Downsize();
+        if (_underlyingArray.Length > Count * 4) Downsize();
 
         return result;
     }

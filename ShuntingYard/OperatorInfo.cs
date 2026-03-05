@@ -21,5 +21,14 @@ internal class OperatorInfo
         _ => throw new ArgumentException()
     };
 
+    public static double Apply(double first, double second, string @operator) => @operator switch
+    {
+        "+" => first + second,
+        "-" => first - second,
+        "*" => first * second,
+        "/" => first / second,
+        "^" => Math.Pow(first, second),
 
+        _ => throw new ArgumentException()
+    };
 }
