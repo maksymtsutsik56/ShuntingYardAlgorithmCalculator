@@ -22,6 +22,9 @@ internal class PostfixCalculatorTest
     [TestCase("1 + 24 * 2", 49.0 )] 
     [TestCase("(1 + 24) * 2", 50.0 )]
     [TestCase("(1 + 24) * 2 ^ 3", 200.0 )]
+    [TestCase("max(sin(0), cos(0))", 1.0 )]
+    [TestCase("max(2,3)", 3.0 )]
+    [TestCase("2+max(3,4)*5", 22.0 )]
     public void Calculate_CorrectlyProcessSimpleExpression(string expression, double expected)
     {
         BasicList<Token> tokens = Tokenizer.Tokenize(expression);

@@ -15,15 +15,50 @@ static class PostfixCalculator
             switch (token.Type)
             {
                 case TokenType.Number:
-                    stack.Push(double.Parse(token.Value)); 
+                {
+                    stack.Push(double.Parse(token.Value));
                     break;
+                }
 
+                    
                 case TokenType.Operator:
+                {
                     double second = stack.Pop();
                     double first = stack.Pop();
 
-                    double result = OperatorInfo.Apply(first, second, token.Value); 
+                    double result = OperatorInfo.Apply(first, second, token.Value);
                     stack.Push(result);
+
+                    break;
+                }
+
+
+                case TokenType.Function:
+                    switch (OperatorInfo.GetArity(token.Value))
+                    {
+                        case 1:
+                        {
+                            double first = stack.Pop();
+
+                            double result = OperatorInfo.Apply(first, token.Value);
+                            stack.Push(result);
+
+                            break;
+                        }
+
+                        case 2:
+                        {
+                            double second = stack.Pop();
+                            double first = stack.Pop();
+
+                            double result = OperatorInfo.Apply(first, second, token.Value);
+                            stack.Push(result);
+
+                            break;
+                        }
+
+                    }
+
                     break;
             }
         }

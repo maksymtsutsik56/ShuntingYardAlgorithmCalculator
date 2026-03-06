@@ -9,7 +9,7 @@ namespace ShuntingYardTests
 
         public void TokenizeShouldReturnDesiredTokens() 
         {
-            string input = "  ( 4 +  sin   456)";
+            string input = "  , 4 max  sin   456)";
 
             BasicList<Token> tokens = Tokenizer.Tokenize(input);
 
@@ -21,8 +21,8 @@ namespace ShuntingYardTests
             Token sixth = tokens[5];
 
             Token[] result = new Token[6] { first, second, third, fourth, fifth, sixth };
-            Token[] expected = new Token[6] { new Token("(", TokenType.OpenParenthesis), new Token("4", TokenType.Number), new Token("+", TokenType.Operator),
-                                             new Token("sin", TokenType.Operator), new Token("456", TokenType.Number), new Token(")", TokenType.CloseParenthesis) };
+            Token[] expected = new Token[6] { new Token(",", TokenType.Comma), new Token("4", TokenType.Number), new Token("max", TokenType.Function),
+                                             new Token("sin", TokenType.Function), new Token("456", TokenType.Number), new Token(")", TokenType.CloseParenthesis) };
 
             Assert.That(result, Is.EqualTo(expected));
         }

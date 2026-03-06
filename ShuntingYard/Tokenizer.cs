@@ -26,7 +26,7 @@ static class Tokenizer
 
                 string value = expression.Substring(start, i - start);
 
-                list.Add(new Token(value, TokenType.Operator));
+                list.Add(new Token(value, TokenType.Function));
                 continue;
             }
 
@@ -53,6 +53,14 @@ static class Tokenizer
             if (c == ')')
             {
                 list.Add(new Token(c.ToString(), TokenType.CloseParenthesis));
+
+                i++;
+                continue;
+            }
+
+            if (c == ',')
+            {
+                list.Add(new Token(c.ToString(), TokenType.Comma));
 
                 i++;
                 continue;

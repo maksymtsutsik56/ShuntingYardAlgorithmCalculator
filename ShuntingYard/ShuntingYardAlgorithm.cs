@@ -18,6 +18,7 @@ static class ShuntingYardAlgorithm
                     break;
 
                 case TokenType.OpenParenthesis:
+                case TokenType.Function:
                     stack.Push(token);
                     break;
 
@@ -31,6 +32,13 @@ static class ShuntingYardAlgorithm
                     stack.Push(token);
                     break;
 
+                case TokenType.Comma:
+                    while ((stack.Peek().Type != TokenType.OpenParenthesis))
+                    {
+                        queue.Enqueue(stack.Pop());
+                    }
+                    break;
+
                 case TokenType.CloseParenthesis:
                     while (stack.Peek().Type != TokenType.OpenParenthesis)
                     {
@@ -38,6 +46,11 @@ static class ShuntingYardAlgorithm
                     }
 
                     stack.Pop();
+                    
+                    if (stack.Count != 0 && stack.Peek().Type == TokenType.Function)
+                    {
+                        queue.Enqueue(stack.Pop());
+                    }
                     break; 
             }
         }
@@ -50,5 +63,3 @@ static class ShuntingYardAlgorithm
         return queue;
     }
 }
-
-

@@ -20,7 +20,7 @@ internal class ShuntingYardAlgorithmTest
     [Test]
     public void ShuntingYardAlgorithmShouldCorrectlyBuildSequence()
     {
-        string infix = "(1 + 5) * 2";
+        string infix = "max(sin(0), cos(0))";
 
         BasicList<Token> tokens = Tokenizer.Tokenize(infix);
         BasicQueue<Token> postfix = ShuntingYardAlgorithm.InfixToRPN(tokens);
@@ -33,7 +33,7 @@ internal class ShuntingYardAlgorithmTest
             values[i] = postfix.Dequeue().Value;
         }
 
-        Assert.That(values, Is.EqualTo(["1", "5", "+", "2", "*"]));
+        Assert.That(values, Is.EqualTo(["0", "sin", "0", "cos", "max"]));
 
     }
 }
