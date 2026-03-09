@@ -25,7 +25,7 @@ internal static class RPNtoASTObj
                         ASTNode right = stack.Pop();
                         ASTNode left = stack.Pop();
 
-                        BinaryOperatorNode node = new BinaryOperatorNode(token.Value, left, right);
+                        BinaryNode node = new BinaryNode(token.Value, left, right);
                         stack.Push(node);
 
                         break;
@@ -39,7 +39,7 @@ internal static class RPNtoASTObj
                             {
                                 ASTNode operand = stack.Pop();
 
-                                UnaryOperatorNode node =  new UnaryOperatorNode(token.Value, operand);
+                                UnaryNode node =  new UnaryNode(token.Value, operand);
                                 stack.Push(node);
 
                                 break;
@@ -50,7 +50,7 @@ internal static class RPNtoASTObj
                                 ASTNode right = stack.Pop();
                                 ASTNode left = stack.Pop();
 
-                                ASTNode node = new BinaryOperatorNode(token.Value, left, right);
+                                ASTNode node = new BinaryNode(token.Value, left, right);
                                 stack.Push(node);
 
                                 break;

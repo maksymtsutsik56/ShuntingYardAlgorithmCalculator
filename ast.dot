@@ -1,0 +1,17 @@
+digraph AST {
+n0 [label = "/"];
+n1 [label = "*"];
+n2 [label = "sin"];
+n3 [label = "12"];
+n4 [label = "16"];
+n5 [label = "+"];
+n6 [label = "2"];
+n7 [label = "5"];
+n0 -> n1;
+n1 -> n2;
+n2 -> n3;
+n1 -> n4;
+n0 -> n5;
+n5 -> n6;
+n5 -> n7;
+}

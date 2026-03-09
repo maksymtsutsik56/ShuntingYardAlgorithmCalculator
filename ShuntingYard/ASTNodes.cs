@@ -1,11 +1,13 @@
 ﻿namespace ShuntingYard;
 
+internal enum NodeType { Number, Binary, Unary }
+
 internal abstract record ASTNode
 {
-    public string Type { get; }
+    public NodeType Type { get; }
     public string Value { get; }
 
-    protected ASTNode(string type, string value)
+    protected ASTNode(NodeType type, string value)
     {
         Type = type;
         Value = value;
@@ -14,31 +16,29 @@ internal abstract record ASTNode
 
 internal record NumberNode : ASTNode
 {
-    public NumberNode(string value) : base("Number", value) { }
+    public NumberNode(string value) : base(NodeType.Number, value) { }
 }
 
-internal record BinaryOperatorNode : ASTNode
+internal record BinaryNode : ASTNode
 {
     public ASTNode Left { get; }
 
     public ASTNode Right { get; }
 
-    public BinaryOperatorNode(string value, ASTNode left, ASTNode right) : base("BinaryOperator", value)
+    public BinaryNode(string value, ASTNode left, ASTNode right) : base(NodeType.Binary, value)
     {
         Left = left;
         Right = right;
     }
 }
 
-internal record UnaryOperatorNode : ASTNode
+internal record UnaryNode : ASTNode
 {
     public ASTNode Operand { get; }
 
-    public UnaryOperatorNode(string value, ASTNode operand ) : base("UnaryOperator", value)
+    public UnaryNode(string value, ASTNode operand ) : base(NodeType.Unary, value)
     {
         Operand = operand;
     }
 }
-
-
 

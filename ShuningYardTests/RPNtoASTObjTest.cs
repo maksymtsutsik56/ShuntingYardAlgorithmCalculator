@@ -16,12 +16,12 @@ internal class RPNtoASTObjTest
         NumberNode four = new NumberNode("4");
         NumberNode five = new NumberNode("5");
 
-        BinaryOperatorNode plus = new BinaryOperatorNode("+", three, four);
-        BinaryOperatorNode multiplication = new BinaryOperatorNode("*", plus, five);
+        BinaryNode plus = new BinaryNode("+", three, four);
+        BinaryNode multiplication = new BinaryNode("*", plus, five);
 
-        UnaryOperatorNode sin = new UnaryOperatorNode("sin", four);
+        UnaryNode sin = new UnaryNode("sin", four);
 
-        BinaryOperatorNode finalMinus = new BinaryOperatorNode("+", multiplication, sin);
+        BinaryNode finalMinus = new BinaryNode("+", multiplication, sin);
 
 
 

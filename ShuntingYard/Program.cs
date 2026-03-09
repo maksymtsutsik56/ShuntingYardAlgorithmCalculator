@@ -10,9 +10,12 @@ internal class Program
 
         BasicList<Token> tokens = Tokenizer.Tokenize(expression);
         BasicQueue<Token> postfix = ShuntingYardAlgorithm.InfixToRPN(tokens);
-        double result = PostfixCalculator.Calculate(postfix);
+        //double result = PostfixCalculator.Calculate(postfix);
 
-        ConsoleIO.PrintStringMessage($"Result: {result}");
+
+        ASTNode tree = RPNtoASTObj.RPNtoAST(postfix);
+        Console.WriteLine(ASTObjToDotLanguage.DotStringBuilder(tree));
+        //ConsoleIO.PrintStringMessage($"Result: {result}");
     }
 }
 
