@@ -31,7 +31,7 @@ internal static class ASTObjToDotLanguage
             AddChildrenAndIgnoreLeaves(currentNode, stack, currentId);
         }
 
-        return "digraph AST {" + labels + connections + "}";
+        return "digraph AST {\n" + labels + connections + "}";
     }
 
     private static void AddChildrenAndIgnoreLeaves(ASTNode node, BasicStack<Vertex> stack, int parentId)

@@ -9,13 +9,14 @@ internal class Program
         string expression = ConsoleIO.ReadStringInput();
 
         BasicList<Token> tokens = Tokenizer.Tokenize(expression);
-        BasicQueue<Token> postfix = ShuntingYardAlgorithm.InfixToRPN(tokens);
-        //double result = PostfixCalculator.Calculate(postfix);
+        BasicQueue<Token> postfix1 = ShuntingYardAlgorithm.InfixToRPN(tokens);
+        BasicQueue<Token> postfix2 = ShuntingYardAlgorithm.InfixToRPN(tokens);
 
+        double result = PostfixCalculator.Calculate(postfix1);
+        ConsoleIO.PrintStringMessage($"Result: {result}");
 
-        ASTNode tree = RPNtoASTObj.RPNtoAST(postfix);
-        Console.WriteLine(ASTObjToDotLanguage.DotStringBuilder(tree));
-        //ConsoleIO.PrintStringMessage($"Result: {result}");
+        ASTNode tree = RPNtoASTObj.RPNtoAST(postfix2);  
+        File.WriteAllText(@"D:\VS Dotnet\ShuntingYard\ast.dot", ASTObjToDotLanguage.DotStringBuilder(tree));
     }
 }
 
