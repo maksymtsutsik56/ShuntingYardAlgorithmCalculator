@@ -2,7 +2,7 @@
 
 internal class OperatorInfo
 {
-    static public readonly string[] AllowedOperators = new string[] { "+", "-", "*", "/", "^", "(", ")", "sin", "cos", "max" };
+    static public readonly string[] AllowedOperators = new string[] { "+", "-", "*", "/", "^", "(", ")", "sin", "cos", "max", "clamp" };
 
     static public Associativity GetAssociativity(string @operator) => @operator switch
     {
@@ -25,6 +25,14 @@ internal class OperatorInfo
     {
         "+" or "-" or "*" or "/" or "^" or "max" => 2,
         "sin" or "cos" => 1,
+        "clamp" => 3,
+
+        _ => throw new ArgumentException()
+    };
+
+    public static double Apply(double first, double second, double third, string @operator) => @operator switch
+    {
+        "clamp" => Math.Clamp(first, second, third),
 
         _ => throw new ArgumentException()
     };

@@ -33,7 +33,7 @@ static class ShuntingYardAlgorithm
                     break;
 
                 case TokenType.Comma:
-                    while ((stack.Peek().Type != TokenType.OpenParenthesis))
+                    while (stack.Peek().Type != TokenType.OpenParenthesis)
                     {
                         queue.Enqueue(stack.Pop());
                     }

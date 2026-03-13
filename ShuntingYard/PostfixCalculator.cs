@@ -57,6 +57,17 @@ static class PostfixCalculator
                             break;
                         }
 
+                        case 3:
+                        {
+                            double third = stack.Pop();
+                            double second = stack.Pop();
+                            double first = stack.Pop();
+
+                            double result = OperatorInfo.Apply(first, second, third, token.Value);
+                            stack.Push(result);
+
+                            break;
+                        }
                     }
 
                     break;

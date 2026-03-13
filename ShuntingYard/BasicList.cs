@@ -2,7 +2,7 @@
 {
     internal class BasicList<T>
     {
-
+        const int MinCapacity = 4;
         const int DefaultUpsizeBy = 2;
         const int DefaultDownsizeBy = 2;
 
@@ -50,7 +50,7 @@
 
             Count--;
 
-            if (_underlyingArray.Length >= Count * 4) Downsize();
+            if (_underlyingArray.Length > MinCapacity && _underlyingArray.Length >= Count * 4) Downsize();
         }
 
         private void Upsize()

@@ -2,7 +2,6 @@
 
 internal record struct Vertex(int ParentId, ASTNode Node);
 
-
 internal static class ASTObjToDotLanguage
 {
     private static int _counter = 0;
@@ -36,14 +35,29 @@ internal static class ASTObjToDotLanguage
 
     private static void AddChildrenAndIgnoreLeaves(ASTNode node, BasicStack<Vertex> stack, int parentId)
     {
+        if (node is TernaryNode ternary)
+        {
+
+            stack.Push(new Vertex(parentId, ternary.Third));
+            stack.Push(new Vertex(parentId, ternary.Second));
+            stack.Push(new Vertex(parentId, ternary.First));
+
+            return;
+        }
+
         if (node is BinaryNode binary)
         {
-            stack.Push(new Vertex(parentId, binary.Right));
-            stack.Push(new Vertex(parentId, binary.Left));
+            stack.Push(new Vertex(parentId, binary.Second));
+            stack.Push(new Vertex(parentId, binary.First));
+
+            return;
         }
-        else if (node is UnaryNode unary)
+
+        if (node is UnaryNode unary)
         {
             stack.Push(new Vertex(parentId, unary.Operand));
+
+            return;
         }
     }
 

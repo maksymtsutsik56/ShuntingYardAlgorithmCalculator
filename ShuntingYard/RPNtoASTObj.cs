@@ -47,10 +47,22 @@ internal static class RPNtoASTObj
 
                         case 2:
                             {
-                                ASTNode right = stack.Pop();
-                                ASTNode left = stack.Pop();
+                                ASTNode second = stack.Pop();
+                                ASTNode first = stack.Pop();
 
-                                ASTNode node = new BinaryNode(token.Value, left, right);
+                                ASTNode node = new BinaryNode(token.Value, first, second);
+                                stack.Push(node);
+
+                                break;
+                            }
+
+                        case 3:
+                            {
+                                ASTNode third = stack.Pop();
+                                ASTNode second = stack.Pop();
+                                ASTNode first = stack.Pop();
+
+                                ASTNode node = new TernaryNode(token.Value, first, second, third);
                                 stack.Push(node);
 
                                 break;

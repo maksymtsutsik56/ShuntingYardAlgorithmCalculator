@@ -5,6 +5,7 @@ internal class BasicStack<T>
 {
     const int DefaultUpsizeBy = 2;
     const int DefaultDownsizeBy = 2;
+    const int MinCapacity = 4;
 
     private T[] _underlyingArray;
     private int _pointer;
@@ -35,7 +36,7 @@ internal class BasicStack<T>
         _underlyingArray[_pointer] = default!;
         _pointer--;
 
-        if (_underlyingArray.Length > Count * 4) Downsize();
+        if (_underlyingArray.Length > MinCapacity && _underlyingArray.Length >= Count * 4) Downsize();
 
         return result;
     }

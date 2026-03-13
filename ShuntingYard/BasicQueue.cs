@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ShuntingYard
+﻿namespace ShuntingYard
 {
     internal class BasicQueue<T>
     {
